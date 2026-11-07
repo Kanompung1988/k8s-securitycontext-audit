@@ -46,7 +46,7 @@ class TestSecurityContext(unittest.TestCase):
         self.assertEqual(run(d), [])
     def test_capability_other(self):
         d = {**BASE, "spec": {**BASE["spec"], "containers":[{"name":"x","securityContext":
-            {"capabilities":{"drop":["ALL"],"add":["SYS_ADMIN"]}}]}}
+            {"capabilities":{"drop":["ALL"],"add":["SYS_ADMIN"]}}}]}}
         self.assertIn("CAPABILITIES_ADD", run(d))
     def test_seccomp_unconfined(self):
         d = {**BASE, "spec": {**BASE["spec"], "securityContext":{"runAsNonRoot":True,"seccompProfile":{"type":"Unconfined"}}}}
